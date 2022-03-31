@@ -1,0 +1,23 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+.DS_Store
+node_modules/
+build/
+.idea/
+.env
+cypress.env.json
+sync
+yarn.lock
+dist/
+dll/
+compiled/
+bazel-bin
+bazel-genfiles
+bazel-Meazr
+bazel-out
+bazel-testlogs
+npm-debug.log
+prerender.js
+package-lock.json
+.vscode

@@ -1,0 +1,132 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "app": {
+      "root": "",
+      "sourceRoot": "public",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "public/styles"
+              ]
+            },
+            "outputPath": "build/public",
+            "index": "public/index.html",
+            "main": "public/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "polyfills": "public/polyfills.ts",
+            "assets": [
+              "public/assets",
+              "public/favicon.ico",
+              "public/robots.txt",
+              "public/manifest.json",
+              "public/firebase-messaging-sw.js",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "public/style.less",
+              "public/style.scss",
+              "./node_modules/quill/dist/quill.core.css",
+              "./node_modules/quill/dist/quill.bubble.css",
+              "./node_modules/quill/dist/quill.snow.css"
+            ],
+            "scripts": [
+              "./node_modules/quill/dist/quill.min.js"
+            ]
+          },
+          "configurations": {
+            "dev": {
+              "fileReplacements": [{
+                "replace": "public/environments/environment.ts",
+                "with": "public/environments/browser/environment.ts"
+              }]
+            },
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [{
+                "replace": "public/environments/environment.ts",
+                "with": "public/environments/browser/environment.prod.ts"
+              }],
+              "serviceWorker": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "app:build"
+          },
+          "configurations": {
+            "dev": {
+              "browserTarget": "app:build:dev"
+            },
+            "production": {
+              "browserTarget": "app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "build/server",
+            "main": "public/main.server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "public/styles"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "app",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "",
+      "styleext": "less"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  },
+  "cli": {
+    "analytics": "3d3fceae-5db7-4d52-b5ce-0b9f528c4d45"
+  }
+}

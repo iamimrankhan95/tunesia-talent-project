@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "include": [
+    "public/**/*.ts"
+  ],
+  "exclude": [
+    "public/test.ts",
+    "public/**/*.spec.ts",
+    "public/**/*.avoid.ts",
+    "public/**/*.0.ts",
+    "public/**/*.1.ts",
+    "public/**/*.1b.ts",
+    "public/**/*.2.ts",
+    "public/**/*.3.ts",
+    "public/**/*.4.ts",
+    "public/**/*.5.ts",
+    "public/**/*.6.ts",
+    "public/**/*.7.ts"
+  ]
+}
